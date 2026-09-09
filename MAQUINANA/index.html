@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Collection Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <h1>Movie Collection</h1>
+      </header>
+
+      <section class="workspace" aria-label="Movie manager">
+        <form id="movieForm" class="movie-form" novalidate>
+          <div class="form-heading">
+            <div>
+              <p class="eyebrow">Movie details</p>
+              <h2 id="formTitle">Add a movie</h2>
+            </div>
+            <span id="editBadge" class="edit-badge" hidden>Editing</span>
+          </div>
+
+          <div id="formError" class="form-error" role="alert" hidden></div>
+          <div class="fields">
+            <label>Movie title
+              <input id="title" name="title" type="text" maxlength="80" placeholder="e.g. Interstellar" required />
+            </label>
+            <label>Year release
+              <select id="year" name="year" required>
+                <option value="">Select a Year</option>
+                <option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option>
+                <option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option>
+              </select>
+            </label>
+            <label>Movie rating <span class="hint">1–10</span>
+              <input id="rating" name="rating" type="number" min="1" max="10" step="1" placeholder="10" required />
+            </label>
+            <label>Poster URL
+              <input id="poster" name="poster" type="url" maxlength="500" placeholder="https://example.com/poster.jpg" required />
+            </label>
+          </div>
+          <label class="synopsis-label">Synopsis
+            <textarea id="synopsis" name="synopsis" maxlength="500" placeholder="Write a short summary of the movie..." required></textarea>
+          </label>
+
+          <fieldset class="cast-fieldset">
+            <legend>Movie cast</legend>
+            <p class="field-help">Add at least one cast member.</p>
+            <div class="cast-add">
+              <input id="castInput" type="text" maxlength="60" placeholder="Cast member name" aria-label="Cast member name" />
+              <button id="addCast" type="button">Add cast</button>
+            </div>
+            <ul id="castDraft" class="cast-draft" aria-live="polite"></ul>
+          </fieldset>
+
+          <div class="form-actions">
+            <button id="submitButton" class="primary" type="submit">Create movie</button>
+            <button id="clearButton" class="secondary" type="button">Clear</button>
+          </div>
+        </form>
+
+        <section class="collection" aria-labelledby="collectionTitle">
+          <div class="collection-heading">
+            <div>
+              <p class="eyebrow">Movie List</p>
+            </div>
+            <span id="movieCount" class="movie-count">0 movies</span>
+          </div>
+          <div id="movieList" class="movie-list" aria-live="polite">
+            <div class="empty-state">No movies saved yet. Add your first one from the form.</div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
